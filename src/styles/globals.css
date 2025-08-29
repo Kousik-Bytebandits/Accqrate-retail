@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  html, body {
+    @apply w-full h-full overflow-x-hidden;
+  }
+
+  main {
+    @apply w-full px-4;
+  }
+  
+  button {
+    @apply  py-2 text-sm rounded-lg;
+  }
+
+  @media (min-width: 768px) {
+    button {
+      @apply  py-3 text-base;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    button {
+      @apply px-8 py-4 text-lg;
+    }
+  }
+
+  @media (max-width: 767px) {
+    html, body {
+      @apply text-base leading-relaxed ;
+    }
+
+    
+
+    img {
+      @apply max-w-full h-auto;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      @apply text-lg;
+    }
+
+    p {
+      @apply text-sm;
+    }
+  }
+}
+
+:root {
+  --stack-top-offset: 80px;
+  --stack-overlap: 28px;
+}
+
+@media (max-width: 480px) {
+  :root {
+    --stack-top-offset: 60px;
+    --stack-overlap: 20px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 1023px) {
+  :root {
+    --stack-top-offset: 70px;
+    --stack-overlap: 24px;
+  }
+}
+@media (min-width: 1024px) {
+  :root {
+    --stack-top-offset: 80px;
+    --stack-overlap: 28px;
+  }
+}
+
+main{
+  width:100%;
+  padding-left:0;
+  padding-right:0;
+}
+body {
+  background-color: #ffffff;
+  color: #000000;
+  font-family: 'Inter';
+  width: 100%;
+  margin:0;
+  padding: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  
+}
+*{
+  box-sizing:border-box;
+  font-family:'Inter';
+}
+
+.skeleton-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+[data-next-badge] {
+  display: none;
+}
+
+.accqrate {
+    max-width: 10px;
+}
