@@ -2,11 +2,9 @@ import React, { useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import { LoadingContext, LoadingProvider } from "../utils/LoadingContext";
 import "../styles/globals.css";
-import "@fortawesome/fontawesome-free/css/all.min.css";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Inter } from "next/font/google";
 import Layout from "../components/layout";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -14,7 +12,7 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
 });
 
-function RouteLoader({ minMs = 500 }) {
+function useMinRouteLoader(minMs = 500) {
   const router = useRouter();
   const { setLoading } = useContext(LoadingContext);
 
@@ -42,40 +40,13 @@ function RouteLoader({ minMs = 500 }) {
       router.events.off("routeChangeError", handleComplete);
     };
   }, [router, minMs, setLoading]);
-
-  return null; // no UI
 }
 
 export default function App({ Component, pageProps }) {
-
-  useEffect(() => {
-  AOS.init({
-    duration: 600, // animation speed
-    easing: "ease-in-out",
-    once: false,   // animate every time on scroll
-    offset: 150,
-    mirror: true,  // trigger point
-  });
-
-  // Refresh on route change and after load
-  const handleRefresh = () => {
-    setTimeout(() => {
-      AOS.refreshHard(); // full refresh so new DOM is scanned
-    }, 100); // small delay so DOM updates first
-  };
-
-  window.addEventListener("load", handleRefresh);
-  document.addEventListener("readystatechange", handleRefresh);
-
-  return () => {
-    window.removeEventListener("load", handleRefresh);
-    document.removeEventListener("readystatechange", handleRefresh);
-  };
-}, []);
+  useMinRouteLoader(); // Activate route loader
 
   return (
     <LoadingProvider>
-      <RouteLoader minMs={500} />
       <main className={inter.className}>
         <Layout>
           <Component {...pageProps} />
