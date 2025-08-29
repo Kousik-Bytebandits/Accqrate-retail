@@ -1,30 +1,25 @@
 import React, { useContext, useState, useEffect } from "react";
 import Skeleton from "../components/skeleton";
 import { LoadingContext } from "../utils/LoadingContext";
+import { motion } from "framer-motion";
 
 export default function Tools() {
   const { loading } = useContext(LoadingContext);
   const [isVisible, setIsVisible] = useState(false);
 
-  const handleVisibilityChange = (entries) => {
-    const [entry] = entries;
-    if (entry.isIntersecting) {
-      setIsVisible(true);
-    }
-  };
-
   useEffect(() => {
-    const observer = new IntersectionObserver(handleVisibilityChange, {
-      rootMargin: "0px",
-      threshold: 0.5,
-    });
-
     const element = document.getElementById("toolsSection");
-    if (element) observer.observe(element);
+    if (!element) return;
 
-    return () => {
-      if (element) observer.unobserve(element);
-    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setIsVisible(true);
+      },
+      { rootMargin: "0px", threshold: 0.3 }
+    );
+
+    observer.observe(element);
+    return () => element && observer.unobserve(element);
   }, []);
 
   if (loading || !isVisible) {
@@ -33,16 +28,8 @@ export default function Tools() {
         id="toolsSection"
         className="bg-white py-8 px-4 max-w-[1200px] mx-auto"
       >
-        <Skeleton
-          height="36px"
-          width="60%"
-          className="mx-auto mb-4"
-        />
-        <Skeleton
-          height="20px"
-          width="80%"
-          className="mx-auto mb-8"
-        />
+        <Skeleton height="36px" width="60%" className="mx-auto mb-4" />
+        <Skeleton height="20px" width="80%" className="mx-auto mb-8" />
         {[1, 2, 3].map((i) => (
           <div key={i} className="flex flex-col md:flex-row items-center gap-4 mb-8">
             <div className="flex-1">
@@ -58,10 +45,22 @@ export default function Tools() {
     );
   }
 
+  const containerVariant = {
+    hidden: { x: -100, opacity: 0 }, // start offscreen left
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
   return (
-    <section
+    <motion.section
       id="toolsSection"
       className="bg-white py-8 px-4 max-w-[1200px] mx-auto"
+      variants={containerVariant}
+      initial="hidden"
+      animate={isVisible ? "visible" : "hidden"}
     >
       <h2 className="text-center text-fluid-h2 font-normal mb-2">
         Robust Control &{" "}
@@ -73,69 +72,48 @@ export default function Tools() {
       </p>
 
       {/* Sections */}
-      <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
-        <div className="flex-1">
-          <h3 className="text-[#C2185B] font-bold text-fluid-h3 mb-2">
-            User-Level Access Controls:
-          </h3>
-          <p className=" text-fluid-h3 leading-tight">
-            Assign roles, limit functions and monitor activity logs.
-          </p>
-        </div>
-        <div className="flex-1 flex justify-center">
-          <video
-            src="/videos/manageroles.mp4"
-            muted
-            autoPlay
-            loop
-            playsInline
-            className="w-full max-w-md rounded-lg"
-          />
-        </div>
-      </div>
-
-      <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
-        <div className="flex-1">
-          <h3 className="text-[#C2185B] font-bold text-fluid-h3 mb-2">
-            Day-End Closure & Auditor Reports:
-          </h3>
-          <p className="text-fluid-h3 leading-tight">
-            Generate comprehensive financial summaries—midnight, festival days,
-            or anytime.
-          </p>
-        </div>
-        <div className="flex-1 flex justify-center">
-          <video
-            src="/videos/dayclosure.mp4"
-            muted
-            autoPlay
-            loop
-            playsInline
-            className="w-full max-w-md rounded-lg"
-          />
-        </div>
-      </div>
-
-      <div className="flex flex-col md:flex-row items-center gap-8">
-        <div className="flex-1">
-          <h3 className="text-[#C2185B] font-bold text-fluid-h3 mb-2">
-            Sales Returns, Credit Notes & Advance Bookings:
-          </h3>
-          <p className="text-fluid-h3 leading-tight">
-            Handle exchanges and pre-orders directly at the counter.
-          </p>
-        </div>
-        <div className="flex-1 flex justify-center">
-          <video
-            src="/videos/productsearch.mp4"
-            muted
-            autoPlay
-            loop
-            playsInline
-            className="w-full max-w-md rounded-lg"
-          />
-        </div>
-      </div>
-    </section>
+      {[
+        {
+          title: "User-Level Access Controls",
+          text: "Assign roles, limit functions and monitor activity logs.",
+          video: "/videos/manageroles.mp4",
+        },
+        {
+          title: "Day-End Closure & Auditor Reports",
+          text: "Generate comprehensive financial summaries—midnight, festival days, or anytime.",
+          video: "/videos/dayclosure.mp4",
+        },
+        {
+          title: "Sales Returns, Credit Notes & Advance Bookings",
+          text: "Handle exchanges and pre-orders directly at the counter.",
+          video: "/videos/productsearch.mp4",
+        },
+      ].map((section, idx) => (
+        <motion.div
+          key={idx}
+          className="flex flex-col md:flex-row items-center gap-8 mb-12 last:mb-0"
+          initial={{ x: -100, opacity: 0 }}
+          animate={isVisible ? { x: 0, opacity: 1 } : {}}
+          transition={{ duration: 0.8, delay: idx * 0.2 }}
+        >
+          <div className="flex-1">
+            <h3 className="text-[#C2185B] font-bold text-fluid-h3 mb-2">
+              {section.title}:
+            </h3>
+            <p className="text-fluid-h3 leading-tight">{section.text}</p>
+          </div>
+          <div className="flex-1 flex justify-center">
+            <video
+              src={section.video}
+              muted
+              autoPlay
+              loop
+              playsInline
+              className="w-full max-w-md rounded-lg"
+            />
+          </div>
+        </motion.div>
+      ))}
+    </motion.section>
   );
 }

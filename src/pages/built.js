@@ -1,39 +1,20 @@
-import { useContext, useState, useEffect } from "react";
-import Skeleton from "../components/skeleton";
+
+import { useContext } from "react";
+import { motion } from "framer-motion";
 import { LoadingContext } from "../utils/LoadingContext";
+import Skeleton from "../components/skeleton";
 import CustomImage from "../components/Image";
 
 export default function Built() {
   const { loading } = useContext(LoadingContext);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const element = document.getElementById("builtSection");
-    if (!element) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-        if (entry.isIntersecting) {
-          setIsVisible(true); // only set once, don’t flip back
-          observer.unobserve(entry.target); // stop observing
-        }
-      },
-      { rootMargin: "0px", threshold: 0.3 }
-    );
-
-    observer.observe(element);
-
-    return () => observer.disconnect();
-  }, []);
 
   const sectionClasses = "w-full bg-[#F2F2F2] mt-6 py-8";
   const containerClasses =
-    "flex flex-wrap md:flex-row md:text-left justify-between max-w-[1300px] mx-auto gap-5 px-10 md:px-6 sm:flex-col sm:text-center";
+    "flex flex-col sm:text-center md:flex-row md:text-left justify-between max-w-[1300px] mx-auto gap-5 px-6 md:px-10";
 
-  if (loading || !isVisible) {
+  if (loading) {
     return (
-      <section id="builtSection" className={sectionClasses}>
+      <section className={sectionClasses}>
         <div className={containerClasses}>
           <div className="flex flex-col justify-center flex-1">
             <Skeleton height="36px" width="60%" className="mb-4" />
@@ -47,11 +28,15 @@ export default function Built() {
   }
 
   return (
-    <section id="builtSection" className={sectionClasses}>
+    <section className={sectionClasses}>
       <div className={containerClasses}>
-        <div
+        {/* Text */}
+        <motion.div
           className="flex flex-col justify-center flex-1"
-        
+          initial={{ opacity: 0, x: -50 }}   // start hidden, left
+          whileInView={{ opacity: 1, x: 0 }} // fade in, slide right
+          viewport={{ once: false, amount: 0.3 }} // animate every time in view
+          transition={{ duration: 0.8 }}
         >
           <h2 className="text-fluid-h2 font-semibold text-[#C2185B] mb-2">
             Built-In{" "}
@@ -63,11 +48,15 @@ export default function Built() {
             <span className="font-semibold text-black">100% ZATCA</span> phase 2
             compliance: Issue e-invoice receipts with every sale, no extra fees
           </p>
-        </div>
+        </motion.div>
 
-        <div
+        {/* Image */}
+        <motion.div
           className="sm:flex sm:justify-center w-auto"
-         
+          initial={{ opacity: 0, x: 50 }}    // start hidden, right
+          whileInView={{ opacity: 1, x: 0 }} // fade in, slide left
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
           <CustomImage
             src="/images/zatak.svg"
@@ -76,7 +65,7 @@ export default function Built() {
             height={350}
             className="h-[200px] md:h-[250px]"
           />
-        </div>
+        </motion.div>
       </div>
     </section>
   );
