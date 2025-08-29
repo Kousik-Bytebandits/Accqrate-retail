@@ -1,7 +1,4 @@
-import CustomVideo from "../components/video";
 import CustomButton from "../components/button";
-import Paragraph from "../components/paragraph";
-import CustomImage from "../components/Image";
 import { useContext } from "react";
 import { LoadingContext } from "../utils/LoadingContext";
 import Skeleton from "../components/skeleton";
@@ -31,25 +28,50 @@ export default function Accqrate() {
 
   return (
     <section className={`w-full ${sectionPadding} flex flex-col items-center`}>
-      <h2 className="text-center text-fluid-h1 leading-tight font-medium mb-4 mt-4 ">
+      <h2
+        className="text-center text-fluid-h1 leading-tight font-medium mb-4 mt-4"
+        data-aos="fade-left"
+        data-aos-delay="100"
+      >
         <span className="text-black font-medium">Accqrate</span>{" "}
         <span className="text-[#C2185B] font-medium">Retail</span>
       </h2>
 
-      <p className="text-center text-fluid-h2  leading-tight font-light  mb-4">
-        Your Modern <span className="text-[#C2185C] font-medium text-fluid-h2">ZATCA Compliant</span> Pos Platform
+      <p
+        className="text-center text-fluid-h2 leading-tight font-light mb-4"
+        data-aos="fade-right"
+        data-aos-delay="200"
+      >
+        Your Modern{" "}
+        <span className="text-[#C2185C] font-medium text-fluid-h2">
+          ZATCA Compliant
+        </span>{" "}
+        Pos Platform
       </p>
 
-      <p lines={2} className="text-center text-fluid-h3 font-light leading-tight md:font-semibold text-black  mb-0 md:mb-4 ">
+      <p
+        lines={2}
+        className="text-center text-fluid-h3 font-light leading-tight md:font-semibold text-black mb-0 md:mb-4"
+        data-aos="fade-left"
+        data-aos-delay="300"
+      >
         All-in-one retail management, designed for speed and flexibility
       </p>
 
-      <p className="md:block hidden max-w-[700px] text-center text-[20px] font-normal text-gray-700  mb-2">
-        Launch your store in minutes, manage everything in one place - from sales to  stock, from any device
+      <p
+        className="md:block hidden max-w-[700px] text-center text-[20px] font-normal text-gray-700 mb-2"
+        data-aos="fade-right"
+        data-aos-delay="400"
+      >
+        Launch your store in minutes, manage everything in one place - from
+        sales to stock, from any device
       </p>
-      
 
-      <div className="flex flex-wrap justify-center gap-4 mt-8 md:mt-12">
+      <div
+        className="flex flex-wrap justify-center gap-4 mt-8 md:mt-12"
+        data-aos="fade-up"
+        data-aos-delay="500"
+      >
         <CustomButton className="w-full max-w-[280px] py-2 h-12 bg-[#C2185C] text-white text-lg font-semibold rounded-[53px] hover:bg-[#a0164d] md:text-base md:w-[90%] sm:text-base sm:w-full">
           REQUEST A DEMO
         </CustomButton>
