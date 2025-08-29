@@ -147,7 +147,7 @@ export default function Footer() {
     <footer id="footerSection" className="bg-white  mt-10">
       {/* Desktop footer */}
       {!isMobile && (
-        <div className="max-w-full mx-auto px-4 py-10 flex justify-between gap-8 overflow-x-auto">
+        <div className="max-w-full mx-auto px-4 md:px-10 py-10 flex justify-between gap-8 overflow-x-auto">
           {sections.map((section, idx) => (
             <div key={idx} className="flex flex-col min-w-[150px]">
               <h3 className="font-bold mb-4 text-sm lg:text-base">{section.title}</h3>
@@ -170,7 +170,7 @@ export default function Footer() {
             </a>
           ))}
         </div>
-        <div className="border-t border-[#0000003D] mb-4 w-[340px] mx-auto" />
+        <div className="border-t border-[#0000003D] mb-4 md:w-[90%] w-[340px] mx-auto" />
 
         <p className="text-[#525252] text-fluid-small ">
           © Copyright 2021 - 2025{" "}
