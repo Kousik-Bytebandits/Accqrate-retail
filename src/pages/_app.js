@@ -8,6 +8,9 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Inter } from "next/font/google";
 import Layout from "../components/layout";
 
+
+
+
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
@@ -49,12 +52,13 @@ export default function App({ Component, pageProps }) {
 
 
 
+
   return (
     <LoadingProvider>
       <main className={inter.className}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
       </main>
     </LoadingProvider>
   );
