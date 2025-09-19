@@ -84,7 +84,7 @@ export default function Choose() {
       animate={isVisible ? "visible" : "hidden"}
     >
       <motion.h2
-        className="text-fluid-h2 font-normal mb-12"
+        className="text-fluid-h2 font-semibold mb-12"
         variants={fadeInLeft}
       >
         Why Choose Accqrate Retail?
@@ -144,14 +144,14 @@ export default function Choose() {
             Ready to accelerate your retail business?
           </motion.h2>
           <motion.div
-            className="flex flex-col lg:flex-row md:max-w-[700px] mx-auto justify-center gap-4"
+            className="flex flex-col md:flex-row md:max-w-[700px] mx-auto justify-center gap-4"
             variants={fadeInRight}
             transition={{ delay: 0.2 }}
           >
             {buttons.map((label, idx) => (
               <motion.button
                 key={idx}
-                className="bg-[#C2185C] hover:bg-pink-800 text-white font-light rounded-lg px-6 py-2 w-[260px] md:w-[300px] mx-auto text-center transition-colors"
+                className="bg-[#C2185C] text-fluid-small hover:bg-pink-800 text-white font-light rounded-lg px-6 py-4 w-[260px] md:w-[300px] mx-auto text-center transition-colors"
                 variants={fadeInRight}
                 transition={{ delay: 0.3 + idx * 0.2 }} // stagger each button slightly
               >

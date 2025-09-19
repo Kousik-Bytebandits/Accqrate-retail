@@ -89,7 +89,7 @@ export default function Tools() {
         Robust Control &{" "}
         <span className="text-[#C2185B] font-bold">Compliance Tools</span>
       </h2>
-      <p className="text-center text-[#000000B2] mb-12 text-fluid-body">
+      <p className="text-center text-[#000000B2] mb-12 text-fluid-body max-w-lg mt-6 leading-snug mx-auto">
         Maintain tight governance over your retail footprint, from terminal
         permissions to financial integrity
       </p>
@@ -114,7 +114,7 @@ export default function Tools() {
       ].map((section, idx) => (
         <motion.div
           key={idx}
-          className="flex flex-col md:flex-row items-center gap-8 mb-12 last:mb-0"
+          className="flex flex-col lg:flex-row lg:items-start gap-8 mb-12 last:mb-0"
           initial={{ x: -100, opacity: 0 }}
           animate={isVisible ? { x: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: idx * 0.2 }}
@@ -123,7 +123,7 @@ export default function Tools() {
             <h3 className="text-[#C2185B] font-bold text-fluid-h3 mb-2">
               {section.title}:
             </h3>
-            <p className="text-fluid-h3 leading-tight">{section.text}</p>
+            <p className="text-fluid-body leading-tight">{section.text}</p>
           </div>
           <div className="flex-1 flex justify-center">
             <video

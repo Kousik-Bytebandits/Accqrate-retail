@@ -15,7 +15,7 @@ export default function Accqrate() {
 
   const sectionClasses = "w-full bg-[#F2F2F2] mt-6 py-8";
   const containerClasses =
-    "flex flex-col sm:text-center md:flex-row md:text-left justify-between max-w-[1300px] mx-auto gap-5 px-6 md:px-10";
+    "flex flex-col text-center lg:flex-row justify-between max-w-[1300px] mx-auto gap-5 px-6 ";
 
   if (loading) {
     return (
@@ -77,12 +77,12 @@ export default function Accqrate() {
       <p className="md:block hidden max-w-[700px] text-center text-[20px] font-normal text-gray-700  mb-2">
         Launch your store in minutes, manage everything in one place - from sales to  stock, from any device
       </p>
-      
-      <div className="flex flex-wrap justify-center gap-4 mt-8 md:mt-12">
-        <CustomButton className="w-full max-w-[280px] py-2 h-12 bg-[#C2185C] text-white text-lg font-semibold rounded-[53px] hover:bg-[#a0164d] md:text-base md:w-[90%] sm:text-base sm:w-full">
+
+      <div className="flex flex-wrap md:flex-nowrap w-full justify-center gap-4 mt-8 md:mt-12">
+        <CustomButton className="w-full max-w-[280px] py-2 h-12 bg-[#C2185C] text-white text-lg font-semibold rounded-[53px] md:text-base md:w-[90%] sm:text-base sm:w-full">
           REQUEST A DEMO
         </CustomButton>
-        <CustomButton className="w-full max-w-[280px] py-2 h-12 bg-[#C2185C] text-white text-lg font-semibold rounded-[53px] hover:bg-[#a0164d] md:text-base md:w-[90%] sm:text-base sm:w-full">
+        <CustomButton className="w-full max-w-[280px] py-2 h-12 bg-white text-[#C2185C] border border-[#C2185C] text-lg font-semibold rounded-[53px]  md:text-base md:w-[90%] sm:text-base sm:w-full">
           CONTACT SALES
         </CustomButton>
       </div>
@@ -122,7 +122,7 @@ export default function Accqrate() {
               E-Invoicing Compliance
             </span>
           </h2>
-          <p className="text-fluid-body text-black md:max-w-[500px] mb-1 sm:text-base">
+          <p className=" text-black mx-auto mt-4 text-fluid-h3 md:max-w-[500px] mb-1 sm:text-base">
             <span className="font-semibold text-black">100% ZATCA</span> phase 2
             compliance: Issue e-invoice receipts with every sale, no extra fees
           </p>

@@ -8,9 +8,6 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Inter } from "next/font/google";
 import Layout from "../components/layout";
 
-
-
-
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
@@ -50,15 +47,16 @@ function useMinRouteLoader(minMs = 500) {
 export default function App({ Component, pageProps }) {
   useMinRouteLoader(); // Activate route loader
 
-
-
-
   return (
     <LoadingProvider>
       <main className={inter.className}>
+        <div id="smooth-wrapper">
+          <div id="smooth-content">
             <Layout>
               <Component {...pageProps} />
             </Layout>
+          </div>
+        </div>
       </main>
     </LoadingProvider>
   );

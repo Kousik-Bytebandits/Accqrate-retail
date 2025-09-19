@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import Skeleton from "../components/skeleton";
 import { LoadingContext } from "../utils/LoadingContext";
 import { motion } from "framer-motion";
-
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/src/components/ui/accordion";
 export default function Pos() {
   const { loading } = useContext(LoadingContext);
   const [isVisible, setIsVisible] = useState(false);
@@ -84,7 +84,7 @@ export default function Pos() {
       {/* Pos Section */}
     <section
       id="posSection"
-      className="bg-[#F2F2F2] p-5 rounded-xl mx-4 mt-8"
+      className=" p-5 rounded-xl mx-4 mt-8"
     >
       <motion.div
         variants={variant}
@@ -102,32 +102,88 @@ export default function Pos() {
             className="w-full h-auto object-contain rounded-lg"
           />
         </div>
-        <div className="flex flex-wrap justify-center gap-4">
-          {[
-            {
-              title: "Direct Interface to Tax portals",
-              text: "Generate and transmit e- invoices in real time",
-            },
-            {
-              title: "Custom Invoice Template",
-              text: "Tailor layouts, logos and messaging without developer support.",
-            },
-            {
-              title: "Audit Trails & Deletion Logs",
-              text: "Track voids and deletions, record reasons—always audit-ready.",
-            },
-          ].map((card, idx) => (
-            <div
-              key={idx}
-              className="bg-[#8A8A8A] w-[330px] md:w-[290px] h-[100px] md:h-[200px] p-2 md:p-6 rounded-xl transition-transform hover:scale-[1.02] hover:-translate-y-1 hover:bg-[#C2185B] relative cursor-pointer"
-            >
-              <h3 className="text-white text-lg mb-2">{card.title}</h3>
-              <p className="text-white opacity-0 transition-opacity hover:opacity-100">
-                {card.text}
-              </p>
-            </div>
-          ))}
-        </div>
+         <Accordion
+          type="single"
+          collapsible
+          className="flex flex-col gap-3
+    sm:grid sm:grid-cols-2 sm:gap-6
+    md:grid md:grid-cols-3 md:max-w-5xl md:mt-14 mx-auto md:gap-12 md:mb-12"
+        >
+          {/* Card 1 */}
+          <AccordionItem
+            value="card-1"
+            className="flex flex-col justify-center bg-gradient-to-r from-[#E6E6E6] to-[#C8C8C8]
+      w-full h-auto rounded-lg px-4 py-4"
+          >
+            <AccordionTrigger className="flex justify-between items-start w-full hover:no-underline">
+              {/* Left: Icon + Title */}
+              <div className="flex flex-col items-start gap-2">
+                <img
+                  src="/images/instant.png"
+                  alt="Instant Access Icon"
+                  className="w-[40px] h-[40px]"
+                />
+                <span className="text-black text-[18px] font-normal">
+                  Direct Interface to Tax Portals
+                </span>
+              </div>
+              {/* The arrow will render automatically here */}
+            </AccordionTrigger>
+
+            <AccordionContent className="px-1 pb-2 text-gray-700 text-sm">
+              Extra details about <b>Instant Access</b> will appear here when expanded.
+            </AccordionContent>
+          </AccordionItem>
+
+          {/* Card 2 */}
+          <AccordionItem
+            value="card-2"
+            className="flex flex-col justify-center bg-gradient-to-r from-[#E6E6E6] to-[#C8C8C8]
+      w-full h-auto rounded-lg px-4 py-4"
+          >
+            <AccordionTrigger className="flex justify-between items-start w-full hover:no-underline">
+              <div className="flex flex-col items-start gap-2">
+                <img
+                  src="/images/invoice.png"
+                  alt="Automated Data Migration Icon"
+                  className="w-[40px] h-[40px]"
+                />
+                <span className="text-black text-[18px] text-left font-normal">
+                  Custom Invoices Templates
+                </span>
+              </div>
+            </AccordionTrigger>
+
+            <AccordionContent className="px-1 pb-2 text-gray-700 text-sm">
+              Extra details about <b>Automated Data Migration</b> will be shown here.
+            </AccordionContent>
+          </AccordionItem>
+
+          {/* Card 3 */}
+          <AccordionItem
+            value="card-3"
+            className="flex flex-col justify-center bg-gradient-to-r from-[#E6E6E6] to-[#C8C8C8]
+      w-full h-auto rounded-lg px-4 py-4"
+          >
+            <AccordionTrigger className="flex justify-between items-start w-full hover:no-underline">
+              <div className="flex flex-col items-start gap-2">
+                <img
+                  src="/images/audit.png"
+                  alt="Role based access Icon"
+                  className="w-[40px] h-[40px]"
+                />
+                <span className="text-black text-left text-[18px] font-normal">
+                  Audit Trails & Deletion Logs
+                </span>
+              </div>
+            </AccordionTrigger>
+
+            <AccordionContent className="px-1 pb-2 text-gray-700 text-sm">
+              Extra details about <b>Role-Based User Setup</b> will go here.
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion> 
+
       </motion.div>
     </section>
 
@@ -168,12 +224,12 @@ export default function Pos() {
             ].map((feature, i) => (
               <motion.div
                 key={i}
-                className="flex flex-col md:flex-row items-center justify-between gap-10 mb-12"
+                className="flex flex-col  lg:flex-row lg:items-start  justify-between gap-10 mb-12"
                 initial={{ x: 100, opacity: 0 }}
                 animate={isVisible ? { x: 0, opacity: 1 } : {}}
                 transition={{ duration: 0.8, delay: i * 0.2 }}
               >
-                <p className="flex-1 text-left text-fluid-h3 text-[#C2185B] font-light max-w-md">
+                <p className="flex-1 text-left leading-snug text-fluid-h3 text-[#C2185B] font-light max-w-lg">
                   {feature.text}
                 </p>
                 <div className="flex-1 flex justify-center">
