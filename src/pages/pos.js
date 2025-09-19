@@ -113,11 +113,11 @@ export default function Pos() {
           <AccordionItem
             value="card-1"
             className="flex flex-col justify-center bg-gradient-to-r from-[#E6E6E6] to-[#C8C8C8]
-      w-full h-auto rounded-lg px-4 py-4"
+      w-full h-auto rounded-lg px-8 py-4"
           >
             <AccordionTrigger className="flex justify-between items-start w-full hover:no-underline">
               {/* Left: Icon + Title */}
-              <div className="flex flex-col items-start gap-2">
+              <div className="flex flex-col items-start gap-6">
                 <img
                   src="/images/instant.png"
                   alt="Instant Access Icon"
@@ -139,10 +139,10 @@ export default function Pos() {
           <AccordionItem
             value="card-2"
             className="flex flex-col justify-center bg-gradient-to-r from-[#E6E6E6] to-[#C8C8C8]
-      w-full h-auto rounded-lg px-4 py-4"
+      w-full h-auto rounded-lg px-8 py-4"
           >
             <AccordionTrigger className="flex justify-between items-start w-full hover:no-underline">
-              <div className="flex flex-col items-start gap-2">
+              <div className="flex flex-col items-start gap-6">
                 <img
                   src="/images/invoice.png"
                   alt="Automated Data Migration Icon"
@@ -163,10 +163,10 @@ export default function Pos() {
           <AccordionItem
             value="card-3"
             className="flex flex-col justify-center bg-gradient-to-r from-[#E6E6E6] to-[#C8C8C8]
-      w-full h-auto rounded-lg px-4 py-4"
+      w-full h-auto rounded-lg px-8 py-4"
           >
             <AccordionTrigger className="flex justify-between items-start w-full hover:no-underline">
-              <div className="flex flex-col items-start gap-2">
+              <div className="flex flex-col items-start gap-6">
                 <img
                   src="/images/audit.png"
                   alt="Role based access Icon"

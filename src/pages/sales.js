@@ -26,7 +26,7 @@ export default function Sales() {
       <h2 className="text-fluid-h2 font-normal mb-3 text-black">
         Supercharge Sales with <span className="text-[#C2185B]">Powerful POS</span> Capabilities
       </h2>
-      <p className="text-[#000000B2] text-fluid-body max-w-2xl mx-auto mb-16">
+      <p className="text-[#000000B2] leading-snug mt-5 text-fluid-body max-w-2xl mx-auto mb-16">
         Empower your front-end team and delight your customers with
         <span className="font-bold"> intuitive, high-speed transactions:</span>
       </p>
@@ -34,14 +34,14 @@ export default function Sales() {
       <div className="flex flex-col items-center relative">
         {/* Marquee Card */}
         <div
-          className="sticky top-10 bg-white rounded-2xl shadow-lg p-6 max-w-4xl w-full z-10"
+          className="sticky mb-4 top-10 bg-white border rounded-2xl shadow-xl p-6 max-w-4xl w-full z-10"
           style={{ minHeight: "500px" }}
         >
           <div className="text-2xl font-bold text-pink-700 text-center mb-5">
             10+ Promotions & Discount Engines
           </div>
           <div className="overflow-hidden w-full">
-            <div className="flex gap-20 animate-marquee py-8">
+            <div className="flex gap-20  animate-marquee py-8">
               {images.concat(images).map((img, idx) => (
                 <div key={idx} className="flex flex-col items-center min-w-[60px] gap-2">
                   <Image src={img.src} width={100} height={100} alt={img.label} />
@@ -56,7 +56,7 @@ export default function Sales() {
         {videoCards.map((card, idx) => (
           <div
             key={idx}
-            className="sticky top-10 bg-white rounded-2xl shadow-lg  p-6 max-w-4xl w-full"
+            className="sticky mb-4 border top-10 bg-white rounded-2xl shadow-xl  p-6 max-w-4xl w-full"
             style={{
              minHeight: "500px",
               zIndex: 20 + idx, // progressive stacking
