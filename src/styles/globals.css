@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    @apply w-full h-full overflow-x-hidden bg-white text-black m-0 p-0 box-border;
+    font-family: 'Inter', sans-serif;
+  }
+
+  main {
+    @apply w-full px-0;
+  }
+
+  button {
+    @apply py-2 text-sm rounded-lg;
+  }
+
+  img {
+    @apply max-w-full h-auto;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-lg;
+  }
+
+  p {
+    @apply text-sm;
+  }
+
+  * {
+    @apply box-border;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .skeleton-container {
+    @apply flex flex-col gap-5 p-5;
+  }
+
+  .accqrate {
+    @apply max-w-[10px];
+  }
+}
+
+
+
+@layer utilities {
+   [data-next-badge] {
+    @apply hidden;
+  }
+  .m-24px {
+    margin: 24px;
+  }
+  .p-24px {
+    padding: 24px;
+  }
+
+  .mx-24px {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+  .px-24px {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .mt-32px {
+    margin-top: 32px;
+  }
+  .mt-48px {
+    margin-top: 48px;
+  }
+  .mt-82px {
+    margin-top: 82px;
+  }
+  .mt-16px {
+    margin-top: 16px;
+  }
+  .mt-12px {
+    margin-top: 12px;
+  }
+  .mt-24px {
+    margin-top: 24px;
+  }
+  /* Letter spacing */
+  .tracking--5 {
+    letter-spacing: -0.05em; /* for headings */
+  }
+  .tracking--2 {
+    letter-spacing: -0.02em; /* for paragraphs */
+  }
+}
